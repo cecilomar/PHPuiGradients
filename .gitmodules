@@ -1,0 +1,3 @@
+[submodule "lib/uiGradients"]
+	path = lib/uiGradients
+	url = https://github.com/Ghosh/uiGradients.git
