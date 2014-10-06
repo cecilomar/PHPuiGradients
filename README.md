@@ -26,8 +26,8 @@ This project is just starting, so there are not at lot of things you can do with
 ###Basic
 ```php
 <?php
-// If you are going to use this script to create a CSS document and link it to an HTML document
-// it's recomented to add a PHP header so it can be recognized as CSS by the web browser. 
+// If you are going to use this script to create a CSS document and link it to HTML you
+// might want to add a HTTP header so it can be recognized as CSS by the web browser. 
 header("Content-type: text/css");
 
 // Include the main file
