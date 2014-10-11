@@ -12,8 +12,16 @@ function PHPuiGradients($selector='.PHPuiGradients', $css=true){
 		// Get a random color combination
 		$randGradient = $uiGradients[array_rand($uiGradients)];
 
-		// To do: Randomize direction of colors. Eg: Left to Right, Right to left.
+		// Randomize which color goes first.
+		if(rand(0,1)){
+			$color1 = $randGradient['colour1'];
+			$color2 = $randGradient['colour2'];
+		}else{
+			$color1 = $randGradient['colour2'];
+			$color2 = $randGradient['colour1'];
 
+		}
+		
 		// Load CSS Template
 		
 		// To do: This is probably going to be the hardest part to do. Is really not that bad but I'll do it at the end.
@@ -23,11 +31,12 @@ function PHPuiGradients($selector='.PHPuiGradients', $css=true){
 		// This part is to be removed once the template part is ready.
 
 		?><?=$selector;?> {
-	background: -webkit-linear-gradient(90deg, <?=$randGradient['colour1'];?> 10%, <?=$randGradient['colour2'];?> 90%); /* Chrome 10+, Saf5.1+ */
-	background:    -moz-linear-gradient(90deg, <?=$randGradient['colour1'];?> 10%, <?=$randGradient['colour2'];?> 90%); /* FF3.6+ */
-	background:     -ms-linear-gradient(90deg, <?=$randGradient['colour1'];?> 10%, <?=$randGradient['colour2'];?> 90%); /* IE10 */
-	background:      -o-linear-gradient(90deg, <?=$randGradient['colour1'];?> 10%, <?=$randGradient['colour2'];?> 90%); /* Opera 11.10+ */
-	background:         linear-gradient(90deg, <?=$randGradient['colour1'];?> 10%, <?=$randGradient['colour2'];?> 90%); /* W3C */
+	/* <?=$randGradient['name'];?> */
+	background: -webkit-linear-gradient(90deg, <?=$color1;?> 10%, <?=$color2;?> 90%); /* Chrome 10+, Saf5.1+ */
+	background:    -moz-linear-gradient(90deg, <?=$color1;?> 10%, <?=$color2;?> 90%); /* FF3.6+ */
+	background:     -ms-linear-gradient(90deg, <?=$color1;?> 10%, <?=$color2;?> 90%); /* IE10 */
+	background:      -o-linear-gradient(90deg, <?=$color1;?> 10%, <?=$color2;?> 90%); /* Opera 11.10+ */
+	background:         linear-gradient(90deg, <?=$color1;?> 10%, <?=$color2;?> 90%); /* W3C */
 }
 
 <?php
@@ -41,5 +50,5 @@ function PHPuiGradients($selector='.PHPuiGradients', $css=true){
 
 // End of the PHP function
 }
-
+print_r($randGradient);
 ?>
