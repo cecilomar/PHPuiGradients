@@ -8,6 +8,9 @@
 
 // Generate a location for the file.
 
+
+
+
 $selector = 'body';
 $templateName = 'horizontal';
 $color1 = '#FF0000';
@@ -31,7 +34,10 @@ $template = str_ireplace('.PHPuiGradients', $selector, $template);
 $template = str_ireplace('#000000', $color1, $template);
 $template = str_ireplace('#FFFFFF', $color2, $template);
 
+// Compress Code.
+include './lib/compressHTML/compressHTML.php';
+$template = compressHTML($template);
 
-echo $template;
 
+echo $template
 ?>
