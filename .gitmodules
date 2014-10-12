@@ -1,3 +1,6 @@
 [submodule "lib/uiGradients"]
 	path = lib/uiGradients
 	url = https://github.com/Ghosh/uiGradients.git
+[submodule "lib/6330907"]
+	path = lib/compressHTML
+	url = https://gist.github.com/6330907.git
