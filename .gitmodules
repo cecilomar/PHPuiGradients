@@ -4,3 +4,6 @@
 [submodule "lib/6330907"]
 	path = lib/compressHTML
 	url = https://gist.github.com/6330907.git
+[submodule "lib/5512dcbbec82703020db"]
+	path = lib/shortHexColor
+	url = https://gist.github.com/5512dcbbec82703020db.git
