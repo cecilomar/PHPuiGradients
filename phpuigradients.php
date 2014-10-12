@@ -1,7 +1,8 @@
 <?php
 
 // Create the function
-function PHPuiGradients($selector='.PHPuiGradients', $css=true){
+function PHPuiGradients($selector='.PHPuiGradients', $css=true, $template='horizontal'){
+	// The default values are on the function.
 
 	// If you want to print the CSS code
 	if($css){
@@ -44,8 +45,8 @@ function PHPuiGradients($selector='.PHPuiGradients', $css=true){
 
 	// Return the colour variables
 	return array(
-		'colour1' => $randGradient['colour1'],
-		'colour2' => $randGradient['colour2']
+		'color1' => $color1,
+		'color2' => $color2
 		);
 
 // End of the PHP function
