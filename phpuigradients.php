@@ -23,24 +23,27 @@ function PHPuiGradients($selector='.PHPuiGradients', $css=true, $template='horiz
 
 		}
 		
-		// Load CSS Template
-		
-		// To do: This is probably going to be the hardest part to do. Is really not that bad but I'll do it at the end.
-		// For now is only going to generate a horizontal gradient.
+		// Create CSS Template Location
+		$templateLocation = './templates/' . $template. '.css';
 
-		// Generate CSS Code
-		// This part is to be removed once the template part is ready.
+		// Check if the template exists.
+		if(file_exists($templateLocation)){
+			$template = file_get_contents($templateLocation);
+		}else{
+			// If the template does not exists, will print this message
+			$template = '/* no template */';
+		}
 
-		?><?=$selector;?> {
-	/* <?=$randGradient['name'];?> */
-	background: -webkit-linear-gradient(90deg, <?=$color1;?> 10%, <?=$color2;?> 90%); /* Chrome 10+, Saf5.1+ */
-	background:    -moz-linear-gradient(90deg, <?=$color1;?> 10%, <?=$color2;?> 90%); /* FF3.6+ */
-	background:     -ms-linear-gradient(90deg, <?=$color1;?> 10%, <?=$color2;?> 90%); /* IE10 */
-	background:      -o-linear-gradient(90deg, <?=$color1;?> 10%, <?=$color2;?> 90%); /* Opera 11.10+ */
-	background:         linear-gradient(90deg, <?=$color1;?> 10%, <?=$color2;?> 90%); /* W3C */
-}
+		// Replace ".PHPuiGradients" with "$selector".
+		$template = str_ireplace('.PHPuiGradients', $selector, $template);
 
-<?php
+		// Replace colors.
+		$template = str_ireplace('#000000', $color1, $template);
+		$template = str_ireplace('#FFFFFF', $color2, $template);
+
+		// The final product.
+		echo $template;
+
 	}
 
 	// Return the colour variables
