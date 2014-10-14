@@ -43,7 +43,7 @@ function PHPuiGradients($selector='.PHPuiGradients', $css=true, $template='horiz
 
 		// Replace 999deg for a random number between 0-359.
 		// To Do: Replace any degree over 360 to a random number. Not just 999
-		$template = str_ireplace('999deg', rand(0,359), $template);
+		$template = str_ireplace('999deg', rand(0,359).'deg', $template);
 
 		// The final product.
 		echo $template;
