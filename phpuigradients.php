@@ -45,11 +45,14 @@ function PHPuiGradients($selector='.PHPuiGradients', $css=true, $template='horiz
 
 	// Minimize (compress) the CSS code
 	$phpminimizeloc = './lib/phpMinimize/phpminimize.php';
-	if(file_exists($phpminimizeloc)){
-		include $phpminimizeloc; // <= Comment this line of you don't want to compress the CSS code.
-		if(function_exists(phpMinimize)){
-			$templateData = phpMinimize($templateData);
+
+	if(function_exists(phpMinimize) == false){
+		if(file_exists($phpminimizeloc)){
+			include $phpminimizeloc; // <= Comment this line of you don't want to compress the CSS code.
 		}
+	}
+	if(function_exists(phpMinimize)){
+		$templateData = phpMinimize($templateData);
 	}
 
 	// If you want to print the CSS code
