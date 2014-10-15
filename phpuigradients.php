@@ -4,59 +4,59 @@
 function PHPuiGradients($selector='.PHPuiGradients', $css=true, $template='horizontal'){
 	// The default values are on the function.
 
+
+	// Load and parse jSon into Array()
+	$uiGradients = json_decode(file_get_contents('./lib/uiGradients/gradients.json'), true);
+
+	// Get a random color combination
+	$randGradient = $uiGradients[array_rand($uiGradients)];
+
+	// Randomize which color goes first.
+	if(rand(0,1)){
+		$color1 = $randGradient['colour1'];
+		$color2 = $randGradient['colour2'];
+	}else{
+		$color1 = $randGradient['colour2'];
+		$color2 = $randGradient['colour1'];
+
+	}
+	
+	// Create CSS Template Location
+	$templateLocation = './templates/' . $template. '.css';
+
+	// Check if the template exists.
+	if(file_exists($templateLocation)){
+		$templateData = file_get_contents($templateLocation);
+	}else{
+		// If the template does not exists, will print this message
+		$templateData = '/* no template */';
+	}
+
+	// Replace ".PHPuiGradients" with "$selector".
+	$templateData = str_ireplace('.PHPuiGradients', $selector, $templateData);
+
+	// Replace colors.
+	$templateData = str_ireplace('#000000', $color1, $templateData);
+	$templateData = str_ireplace('#FFFFFF', $color2, $templateData);
+
+	// Replace 999deg for a random number between 0-359.
+	// To Do: Replace any degree over 360 to a random number. Not just 999
+	$templateData = str_ireplace('999deg', rand(0,359).'deg', $templateData);
+
 	// If you want to print the CSS code
 	if($css){
-
-		// Load and parse jSon into Array()
-		$uiGradients = json_decode(file_get_contents('./lib/uiGradients/gradients.json'), true);
-
-		// Get a random color combination
-		$randGradient = $uiGradients[array_rand($uiGradients)];
-
-		// Randomize which color goes first.
-		if(rand(0,1)){
-			$color1 = $randGradient['colour1'];
-			$color2 = $randGradient['colour2'];
-		}else{
-			$color1 = $randGradient['colour2'];
-			$color2 = $randGradient['colour1'];
-
-		}
-		
-		// Create CSS Template Location
-		$templateLocation = './templates/' . $template. '.css';
-
-		// Check if the template exists.
-		if(file_exists($templateLocation)){
-			$template = file_get_contents($templateLocation);
-		}else{
-			// If the template does not exists, will print this message
-			$template = '/* no template */';
-		}
-
-		// Replace ".PHPuiGradients" with "$selector".
-		$template = str_ireplace('.PHPuiGradients', $selector, $template);
-
-		// Replace colors.
-		$template = str_ireplace('#000000', $color1, $template);
-		$template = str_ireplace('#FFFFFF', $color2, $template);
-
-		// Replace 999deg for a random number between 0-359.
-		// To Do: Replace any degree over 360 to a random number. Not just 999
-		$template = str_ireplace('999deg', rand(0,359).'deg', $template);
-
 		// The final product.
-		echo $template;
-
+		echo $templateData;
 	}
 
 	// Return the colour variables
 	return array(
 		'color1' => $color1,
-		'color2' => $color2
+		'color2' => $color2,
+		'css' => $templateData
 		);
 
 // End of the PHP function
 }
-print_r($randGradient);
+
 ?>
