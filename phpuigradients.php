@@ -43,6 +43,15 @@ function PHPuiGradients($selector='.PHPuiGradients', $css=true, $template='horiz
 	// To Do: Replace any degree over 360 to a random number. Not just 999
 	$templateData = str_ireplace('999deg', rand(0,359).'deg', $templateData);
 
+	// Minimize (compress) the CSS code
+	$phpminimizeloc = './lib/phpMinimize/phpminimize.php';
+	if(file_exists($phpminimizeloc)){
+		include $phpminimizeloc; // <= Comment this line of you don't want to compress the CSS code.
+		if(function_exists(phpMinimize)){
+			$templateData = phpMinimize($templateData);
+		}
+	}
+
 	// If you want to print the CSS code
 	if($css){
 		// The final product.
