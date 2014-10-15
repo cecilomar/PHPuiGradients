@@ -7,3 +7,6 @@
 [submodule "lib/5512dcbbec82703020db"]
 	path = lib/shortHexColor
 	url = https://gist.github.com/5512dcbbec82703020db.git
+[submodule "lib/phpMinimize"]
+	path = lib/phpMinimize
+	url = https://github.com/cecilomar/phpMinimize.git
